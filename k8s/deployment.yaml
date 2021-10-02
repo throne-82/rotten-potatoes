@@ -14,11 +14,7 @@ spec:
     spec:
       containers:
         - name: mongodb
-          image: mongo.4.4.6
-          resources:
-            limits:
-              memory: 512Mi
-              cpu: "1"
+          image: mongo:4.4.6
           ports:
             - containerPort: 27017
           env:
@@ -57,10 +53,6 @@ spec:
       containers:
         - name: web
           image: throne82/rotten-potatoes:v1
-          resources:
-            limits:
-              memory: 512Mi
-              cpu: "1"
           ports:
             - containerPort: 5000
           env:
@@ -87,4 +79,4 @@ spec:
   - port: 80
     targetPort: 5000
     nodePort: 30000
-  type: NodePort
+  type: LoadBalancer
